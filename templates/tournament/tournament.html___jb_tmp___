@@ -1,0 +1,24 @@
+{% load widget_tweaks %}
+
+
+<form method="POST" class="post-form" action="tournament_new/">{% csrf_token %}
+
+    {% for field in tournament_form.visible_fields %}
+    <div class="form-group">
+        {{ field.label_tag }}
+        {% render_field field class="form-control" %}
+        {% if field.help_text %}
+        <small class="form-text text-muted">{{ field.help_text }}</small>
+        {% endif %}
+    </div>
+    {% endfor %}
+    <div class="form-group">
+        <label >Start Date(mm/dd/yyyy)</label>
+        <input  type="text" name="start_datetime" required  class="form-control">
+    </div>
+    <div class="form-group">
+        <label >End Date(mm/dd/yyyy)</label>
+        <input  type="text" name="end_datetime" required  class="form-control">
+    </div>
+    <button type="submit" class="save btn btn-default">Save</button>
+</form>

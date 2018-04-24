@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+
+
+.table.no-border tr td, .table.no-border tr th {
+  border-width: 0;
+   padding: 0 !important;
+   margin: 1 !important;
+}
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+</style>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <table class="table no-border table-condensed" >
+            <tbody>
+            <tr>
+                <td>
+                    <div class="input-group" >
+                        <div class="form-control">{{tourneys.0.player_1}}
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">{{tourneys.0.player_1_score}}</span>
+                        </div>
+                    </div>
+                    <div class="input-group" >
+                        <div class="form-control">{{tourneys.0.player_2}}
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">{{tourneys.0.player_2_score}}</span>
+                        </div>
+                    </div>
+                </td>
+
+                <td style="padding:0px; position:relative;min-width:50px;#7">
+                    <div style="border-right: 2px solid #999; height:53%; float: left; position:absolute;margin-left: 50%;top:50%"></div>
+                    <div style="border-top: 2px solid #999; width: 53%; float: right; position:absolute;top:50%;"></div>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+
+                <td style="padding:0px; position:relative;min-width:50px;#k">
+                    <div style="border-right: 2px solid #999; height:100%; float: left; position:absolute;margin-left: 50%;"></div>
+                    <div style="border-top: 2px solid #999; width: 50%; float: right; position:absolute;top:50%;margin-left: 50%;"></div>
+                </td>
+                <td>
+                    <div class="input-group" >
+                        <div class="form-control">{{tourneys.2.player_1}}
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">{{tourneys.2.player_1_score}}</span>
+                        </div>
+                    </div>
+                    <div class="input-group" >
+                        <div class="form-control">{{tourneys.2.player_2}}
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">{{tourneys.2.player_2_score}}</span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="input-group" >
+                        <div class="form-control">{{tourneys.1.player_1}}
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">{{tourneys.1.player_1_score}}</span>
+                        </div>
+                    </div>
+                    <div class="input-group" >
+                        <div class="form-control">{{tourneys.1.player_2}}
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">{{tourneys.1.player_2_score}}</span>
+                        </div>
+                    </div>
+                </td>
+
+                <td style="padding:0px; position:relative;min-width:50px;#j" >
+                    <div style="border-right: 2px solid #999; height:53%; float: left; position:absolute;margin-left: 50%;"></div>
+                    <div style="border-top: 2px solid #999; width: 53%; float: right; position:absolute;top:50%;"></div>
+                </td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+
+
+        <div class="col-ld-12">
+            <div class="table-responsive">
+                <table class="table  table-bordered">
+                    <tbody>
+                    <tr>
+                        <td style="padding:0px; position:relative;min-width:50px;">
+                            <div class="input-group">
+                                a
+                            </div>
+                        </td>
+
+                        <td style="padding:0px; position:relative;min-width:50px;#j" >
+                            <div style="border-right: 2px solid #999; height:53%; float: left; position:absolute;margin-left: 50%;"></div>
+                            <div style="border-top: 2px solid #999; width: 53%; float: right; position:absolute;top:50%;"></div>
+                        </td>
+                        <td style="padding:0px; position:relative;min-width:50px;#7">
+                            <div style="border-right: 2px solid #999; height:53%; float: left; position:absolute;margin-left: 50%;top:50%"></div>
+                            <div style="border-top: 2px solid #999; width: 53%; float: right; position:absolute;top:50%;"></div>
+                        </td>
+
+                        <td style="padding:0px; position:relative;min-width:50px;">
+                            <div style="border-top: 2px solid #999; width: 100%; float: right; position:absolute;top:50%;"></div>
+                        </td>
+
+                        <td style="padding:0px; position:relative;min-width:50px;#k">
+                            <div style="border-right: 2px solid #999; height:100%; float: left; position:absolute;margin-left: 50%;"></div>
+                            <div style="border-top: 2px solid #999; width: 50%; float: right; position:absolute;top:50%;margin-left: 50%;"></div>
+                        </td>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+    {% endblock content %}

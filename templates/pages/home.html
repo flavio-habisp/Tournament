@@ -1,0 +1,266 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block title %}Home page{% endblock title %}
+
+
+
+{% block javascript %}
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
+
+<script>
+
+
+$(function(){
+  $('[data-toggle="popover"]').popover({ trigger: "hover" })
+});
+
+$(function() {
+    $('input[name="start_datetime"]').daterangepicker({
+        "singleDatePicker": true,
+        "showDropdowns": true,
+        "opens": "center"
+   });
+});
+
+
+$(function() {
+    $('input[name="end_datetime"]').daterangepicker({
+        "singleDatePicker": true,
+        "showDropdowns": true,
+        "opens": "center"
+    });
+});
+
+    $("#formGroupExampleInput").change(function () {
+      console.log( $(this).val() );
+
+      var username = 'flavio';
+
+      $.ajax({
+        url: '{% url "validate" %}',
+
+        data: {
+          'username': username
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            alert(data.error_message);
+          }
+        }
+      });
+
+    });
+
+// this is the id of the form
+$(function() {
+    $('#tag-form-submit').on('click', function(e) {
+        $('#loading-indicator').show();
+        $("#result").html("");
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: '{% url "validate" %}',
+            data: $('#ApllyTournament').serialize(),
+            dataType: 'json',
+            success: function(response) {
+              if (response.is_taken) {
+               // alert(response.error_message);
+                $("#result").html(response.error_message);
+              //adding class
+                $("#result").addClass("alert alert-success");
+                $('#result').fadeIn();
+                $('#result').fadeOut( 2500,"linear" );
+
+              }
+            },
+            error: function (result) {
+                alert(result);
+                $("#result").html(info);
+              //adding class
+                $("#result").addClass("alert alert-danger");
+                $('#result').fadeIn();
+                $('#result').fadeOut( 2500,"linear" );
+            }
+        });
+            $('#loading-indicator').hide();
+
+        return false;
+    });
+});
+
+$('#modal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipientName = button.data('name') // Extract info from data-* attributes
+  var recipientId = button.data('id') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text(recipientName)
+  $("input[name='id']").val(recipientId)
+
+})
+
+
+jQuery(document).ready(function($) {
+    $('[data-click] tbody th').click(function() {
+        var url = $(this).closest('table').data("url");
+        var id = $(this).closest('tr').data('id');
+        window.location = url+id;
+    });
+});
+
+  </script>
+{% endblock %}
+{% block content %}
+
+<!-- Modal -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalVerticalLabel" aria-hidden="true">
+
+    <div class="modal-dialog"  role="document">
+        <div class="modal-content">
+            <div><img src="{% static 'images/loading.gif' %}" id="loading-indicator" WIDTH="40%" style="display:none;position: fixed;  left: 24%;  top: 10%; z-index: 10;" />
+            </div>
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalVerticalLabel">Tournament</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <center><div id="result"  role="alert"></div></center>
+                <form id="ApllyTournament" method="post" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+                    <input type="hidden" name="id">
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" name="name" placeholder="Name" value="{{user.username}}">
+                        <p class="form-control-static">{{user.username}}</p>
+
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden"   name="email" placeholder="e-mail" value="{{user.email}}">
+                        <p class="form-control-static">{{user.email}}</p>
+
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="number" placeholder="Account Number" >
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <input id="tag-form-submit" type="submit" class="btn btn-primary" value="Apply">
+            </div>
+        </div>
+    </div>
+</div><!-- /.modal -->
+
+
+<div class="alert alert-primary alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <marquee direction="right" scrollamount="3" behavior="scroll" onmouseover="this.stop()" onmouseout="this.start()">
+        {% for tourney in tourneys %}
+        <a class="hvr-pop">{{ tourney.tournament_ads}} [{{tourney.start_datetime|date:'b-d'}}]</a><a> -*- </a>
+        {% endfor %}
+
+    </marquee>
+</div>
+<div class="card">
+
+
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs" id="outerTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#tabc" aria-controls="tabc" role="tab" aria-expanded="true">Tournaments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tabb" aria-controls="tabb" role="tab">New</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#taba" aria-controls="taba" role="tab">Tab-3</a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body tab-content">
+
+        <div class="tab-pane active" id="tabc" role="tabpanel">
+            <table class="table table-hover" data-click data-url="/tournament/">
+                <tbody >
+                {% for tourney in tourneys %}
+                <tr data-id="{{tourney.id}}">
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <th>{{tourney.name}}</th>
+                    <th>{{tourney.sport}}</th>
+                    <th>{{tourney.start_datetime|date:'M d'}}/{{tourney.end_datetime|date:'M d'}}</th>
+
+                    {% if user.is_authenticated %}
+                    <td><button type="button" class="btn btn-outline-primary"  data-toggle="modal" data-target="#modal" data-name="{{tourney.name}}" data-id="{{tourney.id}}" >Apply</button></td>
+
+                    <td><a type="button" class="btn btn-secondary" data-container="body" href="tournament_del/{{tourney.id}}"
+                                data-toggle="popover" data-placement="left"  onclick="return confirm('Are you sure you want to delete?')"
+                                data-content="All registers for '{{tourney.name}}' will be deleted!">
+                        X
+                    </a></td>
+                    {% else %}
+                    <td><a href="{% url 'account_login' %}" class="btn btn-outline-primary">Log in</a></td>
+                    <td></td>
+                    {% endif %}
+
+
+
+                </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+        <div class="tab-pane" id="tabb" role="tabpanel">
+
+{% include "tournament/tournament.html" with form=comment_form %}
+
+        </div>
+        <div class="tab-pane" id="taba" role="tabpanel">
+            Content for Tab-3 and:
+            <div class="card">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs" id="innerTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#tab1" aria-controls="tab1" role="tab" aria-expanded="true">Nested Tab-1</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tab2" aria-controls="tab2" role="tab">Nested Tab-2</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tab3" aria-controls="tab3" role="tab">Nested Tab-2</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body tab-content">
+                    <div class="tab-pane active" id="tab1" role="tabpanel">
+                        Content for Nested Tab-1
+                    </div>
+                    <div class="tab-pane" id="tab2" role="tabpanel">
+                        Content for Nested Tab-2
+                    </div>
+                    <div class="tab-pane" id="tab3" role="tabpanel">
+                        Content for Nested Tab-3
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+

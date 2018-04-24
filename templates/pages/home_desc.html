@@ -1,0 +1,373 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home page{% endblock title %}
+
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<style>
+.board{
+    width: 100%;
+/*margin: 10px auto;*/
+height: 650px;
+background: #fff;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.board .nav-tabs {
+    position: relative;
+    /* border-bottom: 0; */
+    /* width: 80%; */
+    margin: 30px auto;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+}
+
+.board > div.board-inner{
+/*    background: #fafafa url(http://subtlepatterns.com/patterns/geometry2.png); */
+    background-size: 30%;
+}
+
+p.narrow{
+    width: 60%;
+    margin: 10px auto;
+}
+
+.liner{
+    height: 2px;
+    background: #ddd;
+    position: absolute;
+    width: 60%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    z-index: 1;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    color: #555555;
+    cursor: default;
+    /* background-color: #ffffff; */
+    border: 0;
+    border-bottom-color: transparent;
+}
+
+span.round-tabs{
+    width: 140px;
+    height: 70px;
+    line-height: 70px;
+    display: inline-block;
+    border-radius: 100px;
+    background: white;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    text-align: center;
+    font-size: 25px;
+}
+
+span.round-tabs.one{
+    color: #25c;border: 2px solid #25c;
+}
+
+li.active span.round-tabs.one{
+    background: #fff !important;
+    border: 2px solid #ddd;
+    color: 333;
+}
+
+span.round-tabs.two{
+    color: #25c;border: 2px solid #25c;
+}
+
+li.active span.round-tabs.two{
+    background: #fff !important;
+    border: 2px solid #ddd;
+}
+
+span.round-tabs.three{
+    color: #25c;border: 2px solid #25c;
+}
+
+li.active span.round-tabs.three{
+    background: #fff !important;
+    border: 2px solid #ddd;
+}
+
+span.round-tabs.four{
+    color: #25c;border: 2px solid #25c;
+}
+
+li.active span.round-tabs.four{
+    background: #fff !important;
+    border: 2px solid #ddd;
+}
+
+span.round-tabs.five{
+    color: #25d;border: 2px solid #25d;
+}
+
+li.active span.round-tabs.five{
+    background: #fff !important;
+    border: 2px solid #ddd;
+}
+
+.nav-tabs > li.active > a span.round-tabs{
+    background: #fafafa;
+}
+.nav-tabs > li {
+    width: 18%;
+}
+/*li.active:before {
+    content: " ";
+    position: absolute;
+    left: 45%;
+    opacity:0;
+    margin: 0 auto;
+    bottom: -2px;
+    border: 10px solid transparent;
+    border-bottom-color: #fff;
+    z-index: 1;
+    transition:0.2s ease-in-out;
+}*/
+li:after {
+    content: " ";
+    position: absolute;
+    left: 45%;
+   opacity:0;
+    margin: 0 auto;
+    bottom: 0px;
+    border: 5px solid transparent;
+    border-bottom-color: #ddd;
+    transition:0.1s ease-in-out;
+
+}
+li.active:after {
+    content: " ";
+    position: absolute;
+    left: 45%;
+   opacity:1;
+    margin: 0 auto;
+    bottom: 0px;
+    border: 10px solid transparent;
+    border-bottom-color: #ddd;
+
+}
+.nav-tabs {
+    text-align:center;
+}
+
+.nav-tabs > li a{
+   width: 70px;
+   height: 70px;
+   margin: 20px auto;
+   border-radius: 100%;
+   padding: 0;
+}
+
+.nav-tabs > li a:hover{
+    background: transparent;
+}
+
+.tab-content{
+}
+.tab-pane{
+   position: relative;
+padding-top: 50px;
+    width: 80%;
+}
+.tab-content .head{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 25px;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+}
+.btn-outline-rounded{
+    padding: 10px 40px;
+    margin: 20px 0;
+    border: 2px solid transparent;
+    border-radius: 25px;
+}
+
+.btn.green{
+    background-color:#5cb85c;
+    /*border: 2px solid #5cb85c;*/
+    color: #ffffff;
+}
+
+
+
+@media( max-width : 585px ){
+
+    .board {
+width: 90%;
+height:auto !important;
+}
+    span.round-tabs {
+        font-size:16px;
+width: 50px;
+height: 50px;
+line-height: 50px;
+    }
+    .tab-content .head{
+        font-size:20px;
+        }
+    .nav-tabs > li a {
+width: 50px;
+height: 50px;
+line-height:50px;
+}
+
+li.active:after {
+content: " ";
+position: absolute;
+left: 35%;
+}
+
+.btn-outline-rounded {
+    padding:12px 20px;
+    }
+}
+
+</style>
+
+
+<div class="container">
+    <div class="row">
+        <div class="board">
+
+            <div class="board-inner">
+                <ul class="nav nav-tabs justify-content-center" id="myTab">
+                    <div class="liner"></div>
+                    <li class="active">
+                        <a href="#home" data-toggle="tab" title="tennis">
+                      <span class="round-tabs one">
+                        Tennis
+                      </span>
+                        </a></li>
+
+                    <li><a href="#profile" data-toggle="tab" title="squash">
+                     <span class="round-tabs two">
+                         Squash
+                     </span>
+                    </a>
+                    </li>
+                    <li><a href="#messages" data-toggle="tab" title="pickleball">
+                     <span class="round-tabs three">
+                            Pickleball
+                     </span> </a>
+                    </li>
+
+                    <li><a href="#settings" data-toggle="tab" title="table">
+                         <span class="round-tabs four">
+                             PingPong
+                         </span>
+                    </a></li>
+
+                    <!-- li><a href="#doner" data-toggle="tab" title="completed">
+                     <span class="round-tabs five">
+
+                     </span> </a>
+                    </li -->
+
+                </ul></div>
+
+            <div class="tab-content justify-content-center">
+                <div class="tab-pane fade in active" id="home">
+
+                    <h3 class="head text-center">2018 Tennis Club Champs</h3>
+                    <p>SINGLES APRIL 6–8 | DOUBLES APRIL 13–15 MIXED DOUBLES MAY 4–6</p>
+                    <p>Event Details • A (4.0+) &amp; B (3.0 – 4.0) draws in all categories. • Guarantee of two matches (2 out of 3 set with a super-breaker as the third set)</p>
+                    <p>Entry Fee Singles only: $69 + HST per person Doubles Only: $49 + HST per person Two Events: $89 + HST per person Note: Adults only.<br />
+                        Includes:</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Champions Dinner and Celebration on May 10th</li>
+                        <li class="list-group-item">Prizes for the winners and runners-up</li>
+                        <li class="list-group-item">Courtside sponsor activities</li>
+                        <li class="list-group-item">Automatic entry into sponsor contests and events</li>
+                    </ul>
+                    <p>Winner &amp; runner up of the A &amp; B draws will be invited to play in the 2018 Mayfair Tournament of Champions on Friday May 25th and Saturday May 26th.<br />
+                        Great prizes, including special Tournament of Champions Unlimited Play Passes and more!<br />
+                        Register today with Brian Clements at: <a href="mailto:lakeshoretennis@mayfairclubs.com">lakeshoretennis@mayfairclubs.com</a></p>
+                </div>
+                <div class="tab-pane fade" id="profile">
+                    <h3 class="head text-center">2018 Squash Club Champs</h3>
+
+                    <p>SINGLES &amp; DOUBLES APRIL 3–26 | MIXED DOUBLES APRIL 27–29</p>
+                    <p>Event Details • Open, A, B, C, D, E &amp; Novice • Over 50, 55, 60 &amp; 65 • Juniors Under 9, 11, 13, 15 &amp; 17<br />
+                        Entry Fee (for two events) Adults: $69 + HST per person Juniors: $25 + HST per person<br />
+                        Includes:</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Champions Dinner and Celebration on May 10</li>
+                        <li class="list-group-item">Prizes for the winners and runners-up</li>
+                        <li class="list-group-item">Courtside sponsor activities</li>
+                        <li class="list-group-item">Automatic entry into sponsor contests and events</li>
+                    </ul>
+                    <p>Register today with Barbara Cooper at: <a href="mailto:lakeshoresquash@mayfairclubs.com">lakeshoresquash@mayfairclubs.com</a></p>
+                    <p>Winner &amp; runner up of the A &amp; B draws will be invited to play in the 2018 Mayfair Tournament of Champions on Friday May 25th and Saturday May 26th.</p>
+
+                </div>
+                <div class="tab-pane fade" id="messages">
+                    <h3 class="head text-center">2018 Pickleball Club Champs</h3>
+
+                    <p>Event details:</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Matches will take place on Courts 7 &amp; 8</li>
+                        <li class="list-group-item">Maximum of 8 teams in each of the MD &amp; WD draw</li>
+                        <li class="list-group-item">Maximum of 16 teams in each in the MXD draw</li>
+                        <li class="list-group-item">Guarantee of two matches (Two out of three games)</li>
+                    </ul>
+                    <p>Entry Fee $49 per person for one event $69 per person for two events. Includes:</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Championships Dinner on May 10th</li>
+                        <li class="list-group-item">Excellent prizes for the winners and runners up of the main draws and consolation draws (B draw)</li>
+                    </ul>
+                    <p>Register today with the front desk or email Sandra Barrett at <a href="mailto:sbarrett@mayfairclubs.com">sbarrett@mayfairclubs.com</a></p>
+
+                </div>
+                <div class="tab-pane fade" id="settings">
+
+                    <h3 class="head text-center">2018 Table Tennis Club Champs</h3>
+                <div class="list-group>
+                    <p>TUESDAY MAY 8th • 6:30PM</p>
+                    <p>Event details:</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Men’s and Women’s Singles</li>
+                        <li class="list-group-item">Games played in the multi-gym</li>
+                        <li class="list-group-item">Maximum of 16 players in each draw</li>
+                        <li class="list-group-item">Guaranteed two matches (2 out of 3 games)</li>
+                        <li class="list-group-item">Open to members and staﬀ</li>
+                    </ul>
+                    <p>Entry Fee: $25 per person. Includes:</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Drink in the Bistro &amp; 20% oﬀ your meal</li>
+                        <li class="list-group-item">Prizes for the winners &amp; runners-up of the main &amp; consolation draws</li>
+                    </ul>
+                    <p>Register today with the front desk or email Sports, Social &amp; Sponsorship Manager: <a href="mailto:sbarrett@mayfairclubs.com">sbarrett@mayfairclubs.com</a></p>
+                </div>
+                </div>
+                <div class="tab-pane fade" id="doner">
+                    <div class="text-center">
+                        <i class="img-intro icon-checkmark-circle"></i>
+                    </div>
+                    <h3 class="head text-center">thanks for staying tuned! <span style="color:#f48260;">♥</span>Kodeinfo</h3>
+                    <p class="narrow text-center">
+                        Lorem ipsum dolor sit amet, his ea mollis fabellas principes. Quo mazim facilis tincidunt ut, utinam saperet facilisi an vim.
+                    </p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+

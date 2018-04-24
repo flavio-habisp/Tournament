@@ -1,0 +1,311 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+
+
+.table.no-border tr td, .table.no-border tr th {
+  border-width: 0;
+   padding: 0 !important;
+   margin: 1 !important;
+}
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+
+
+.rating {
+  display: flex;
+flex-direction: row-reverse;
+
+}
+
+.rating td:hover {
+  background-color: lightgreen;
+}
+.rating td:hover ~ td {
+  background-color: lightblue;
+}
+
+
+</style>
+
+
+<div class="row">
+    <div class="mw-80">
+        <table class="table no-border table-condensed" >
+            <tbody>
+            <tr>
+                <td>
+                    <div class="input-group" >
+                        <div class="form-control">{{tourneys.0.player_1}}kkkkkk
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">{{tourneys.0.player_1_score}}</span>
+                        </div>
+                    </div>
+                    <div class="input-group" >
+                        <div class="form-control">{{tourneys.0.player_2}}
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">{{tourneys.0.player_2_score}}</span>
+                        </div>
+                    </div>
+                </td>
+
+                <td style="padding:0px; position:relative;min-width:50px;#7">
+                    <div style="border-right: 2px solid #999; height:53%; float: left; position:absolute;margin-left: 50%;top:50%"></div>
+                    <div style="border-top: 2px solid #999; width: 53%; float: right; position:absolute;top:50%;"></div>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+
+                <td style="padding:0px; position:relative;min-width:50px;#k">
+                    <div style="border-right: 2px solid #999; height:100%; float: left; position:absolute;margin-left: 50%;"></div>
+                    <div style="border-top: 2px solid #999; width: 50%; float: right; position:absolute;top:50%;margin-left: 50%;"></div>
+                </td>
+                <td>
+                    <div class="input-group">
+                        <div class="form-control">Team 12
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">XX</span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="form-control">Team 12
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">XX</span>
+                        </div>
+                    </div>
+                </td>
+                <td style="padding:0px; position:relative;min-width:50px;#7">
+                    <div style="border-right: 2px solid #999; height:53%; float: left; position:absolute;margin-left: 50%;top:50%"></div>
+                    <div style="border-top: 2px solid #999; width: 53%; float: right; position:absolute;top:50%;"></div>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="input-group" >
+                        <div class="form-control">{{tourneys.1.player_1}}
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">{{tourneys.1.player_1_score}}</span>
+                        </div>
+                    </div>
+                    <div class="input-group" >
+                        <div class="form-control">{{tourneys.1.player_2}}
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">{{tourneys.1.player_2_score}}</span>
+                        </div>
+                    </div>
+                </td>
+
+                <td style="padding:0px; position:relative;min-width:50px;#j" >
+                    <div style="border-right: 2px solid #999; height:52%; float: left; position:absolute;margin-left: 50%;"></div>
+                    <div style="border-top: 2px solid #999; width: 52%; float: right; position:absolute;top:50%;"></div>
+                </td>
+                <td></td>
+                <td style="padding:0px; position:relative;min-width:50px;#|">
+                    <div style="border-right: 2px solid #999; height:100%; float: left; position:absolute;margin-left: 50%;"></div>
+                </td>
+                <td >
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                </td>
+                <td >
+                </td>
+                <td>
+
+
+                <td style="padding:0px; position:relative;min-width:50px;#k">
+                    <div style="border-right: 2px solid #999; height:100%; float: left; position:absolute;margin-left: 50%;"></div>
+                    <div style="border-top: 2px solid #999; width: 50%; float: right; position:absolute;top:50%;margin-left: 50%;"></div>
+                </td>
+                <td>
+
+                    <div class="input-group" >
+                        <div class="form-control">Team 1234
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">XX</span>
+                        </div>
+                    </div>
+                    <div class="input-group" >
+                        <div class="form-control">Team 1234
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">XX</span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="input-group" >
+                        <div class="form-control">{{tourneys.2.player_1}}
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">{{tourneys.2.player_1_score}}</span>
+                        </div>
+                    </div>
+                    <div class="input-group" >
+                        <div class="form-control">{{tourneys.2.player_2}}
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">{{tourneys.2.player_2_score}}</span>
+                        </div>
+                    </div>
+                </td>
+
+                <td style="padding:0px; position:relative;min-width:50px;#7">
+                    <div style="border-right: 2px solid #999; height:53%; float: left; position:absolute;margin-left: 50%;top:50%"></div>
+                    <div style="border-top: 2px solid #999; width: 53%; float: right; position:absolute;top:50%;"></div>
+                </td>
+                <td></td>
+                <td style="padding:0px; position:relative;min-width:50px;#|">
+                    <div style="border-right: 2px solid #999; height:100%; float: left; position:absolute;margin-left: 50%;"></div>
+                </td>
+                <td >
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+
+                <td style="padding:0px; position:relative;min-width:50px;#k">
+                    <div style="border-right: 2px solid #999; height:100%; float: left; position:absolute;margin-left: 50%;"></div>
+                    <div style="border-top: 2px solid #999; width: 50%; float: right; position:absolute;top:50%;margin-left: 50%;"></div>
+                </td>
+                <td>
+                    <div class="input-group">
+                        <div class="form-control">Team 34
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">XX</span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="form-control">Team 34
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">XX</span>
+                        </div>
+                    </div>
+                </td>
+
+                <td style="padding:0px; position:relative;min-width:50px;#j" >
+                    <div style="border-right: 2px solid #999; height:52%; float: left; position:absolute;margin-left: 50%;"></div>
+                    <div style="border-top: 2px solid #999; width: 52%; float: right; position:absolute;top:50%;"></div>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="input-group" >
+                        <div class="form-control">{{tourneys.3.player_1}}
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">{{tourneys.3.player_1_score}}</span>
+                        </div>
+                    </div>
+                    <div class="input-group" >
+                        <div class="form-control">{{tourneys.3.player_2}}
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">{{tourneys.3.player_2_score}}</span>
+                        </div>
+                    </div>
+                </td>
+
+                <td style="padding:0px; position:relative;min-width:50px;#j" >
+                    <div style="border-right: 2px solid #999; height:52%; float: left; position:absolute;margin-left: 50%;"></div>
+                    <div style="border-top: 2px solid #999; width: 52%; float: right; position:absolute;top:50%;"></div>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+
+
+        <div class="col-ld-12 rating">
+            <div class="table-responsive">
+                <table class="table  table-bordered">
+                    <tbody>
+                    <tr>
+                        <td data-rating="1" style="padding:0px; position:relative;min-width:50px;">
+                            <div class="input-group">
+                                a
+                            </div>
+                        </td>
+
+                        <td  data-rating="2" style="padding:0px; position:relative;min-width:50px;#j" >
+                            <div style="border-right: 2px solid #999; height:53%; float: left; position:absolute;margin-left: 50%;"></div>
+                            <div style="border-top: 2px solid #999; width: 53%; float: right; position:absolute;top:50%;"></div>
+                        </td>
+                        <td data-rating="3" style="padding:0px; position:relative;min-width:50px;#7">
+                            <div style="border-right: 2px solid #999; height:53%; float: left; position:absolute;margin-left: 50%;top:50%"></div>
+                            <div style="border-top: 2px solid #999; width: 53%; float: right; position:absolute;top:50%;"></div>
+                        </td>
+
+                        <td data-rating="4" style="padding:0px; position:relative;min-width:50px;">
+                            <div style="border-top: 2px solid #999; width: 100%; float: right; position:absolute;top:50%;"></div>
+                        </td>
+
+                        <td data-rating="5" style="padding:0px; position:relative;min-width:50px;#|">
+                            <div style="border-right: 2px solid #999; height:100%; float: left; position:absolute;margin-left: 50%;"></div>
+                        </td>
+
+                        <td data-rating="6" style="padding:0px; position:relative;min-width:50px;#k">
+                            <div style="border-right: 2px solid #999; height:100%; float: left; position:absolute;margin-left: 50%;"></div>
+                            <div style="border-top: 2px solid #999; width: 50%; float: right; position:absolute;top:50%;margin-left: 50%;"></div>
+                        </td>
+                        <td data-rating="7" style="padding:0px; position:relative;min-width:50px;#|_">
+                            <div style="border-right: 2px solid #999; height:100%; float: left; position:absolute;margin-left: 50%;"></div>
+                            <div style="border-top: 2px solid #999; width: 50%; float: right; position:absolute;margin-left: 50%;"></div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+<div >
+
+                <table class="table  table-bordered">
+                    <tbody>
+                    <tr class="rating">
+                         <td>1</td>
+                        <td>2</td>
+                         <td>3</td>
+                        <td>4</td>
+                         <td>5</td>
+                        <td>6</td>
+                         <td>7</td>
+                        <td>8</td>
+                    </tr>
+                    </tbody>
+                </table>
+</div>
+
+    {% endblock content %}

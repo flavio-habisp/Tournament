@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+<style>
+
+
+
+</style>
+<!-- Custom styles for this template -->
+{% block title %}Tournament{% endblock %}
+
+{% block content %}
+<nav class="navbar sticky-top navbar-dark fixed-top flex-md-nowrap p-0" style="background:  #000080;">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
+  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+  <ul class="navbar-nav px-3">
+    <li class="nav-item text-nowrap">
+      <a class="nav-link" href="#">Sign out</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="card text-center ">
+  <div class="card-header "  style="background:  #0000c0;">
+    <ul class="nav nav-tabs  navbar-dark card-header-tabs justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu1">Menu 1</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
+      </li>
+    </ul>
+
+  </div>
+  <div class="card-block tab-content">
+    <div class="tab-pane active container" id="home">1</div>
+    <div class="tab-pane container" id="menu1">2</div>
+    <div class="tab-pane container" id="menu2">3</div>
+  </div>
+  <div class="card-footer card-block">
+    <ul class="nav nav-pills card-footer-pills  justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#home">Active</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu1">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " data-toggle="tab" href="#menu2">Disabled</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown"
+           href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+          Dropdown</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#!">Action</a>
+          <a class="dropdown-item" href="#!">Another action</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+{% endblock content %}
