@@ -13,7 +13,7 @@ SECRET_KEY = '4(j*7q=-dm@4&d8hb)-ivy#b(&_3ew19ujzo#h_hq-39!6-5d+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['wflaviow.pythonanywhere.com']
+ALLOWED_HOSTS = ['wflaviow.pythonanywhere.com','localhost']
 
 
 # Application definition

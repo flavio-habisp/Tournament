@@ -13,7 +13,8 @@ class SignUp(generic.CreateView):
 
 
 def dashboard(request):
-    return render(request, 'account/dashboard.html')
+    #return render(request, 'account/dashboard.html')
+    return render(request, 'tournament/tourney.html')
 
 
 def tournament(request):
