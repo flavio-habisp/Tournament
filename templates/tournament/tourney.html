@@ -1,4 +1,102 @@
 {% extends 'base.html' %}
 
-{% load static %}
 
+
+{% block javascript %}
+<script>
+
+
+
+jQuery(document).ready(function($) {
+    $('[data-click] li').click(function() {
+    $('#target').text($(this).find('span').text())
+    });
+});
+
+  </script>
+{% endblock javascript %}
+{% block content %}
+
+<style>
+
+
+
+</style>
+
+
+<div class="container-fluid ">
+    <div class="row">
+        <nav class="col-md-2 none md-block bg-light sidebar ">
+            <div class="row  md-block "  style="background:  #000080;"><h3 class="nav-link">
+                <div id="target" class="text-white"> Dashboard </div></h3>
+            </div>
+            <div class="row">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column" data-click id="outerTab" role="tablist">
+                        <li class="nav-item">
+                            <span class="nav-link">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item align-content-center">
+                            <a class="nav-link text-nowrap" data-toggle="tab" href="#tabDetails" aria-controls="tabDetails" role="tab">
+                                <i class="material-icons align-middle" >
+                                    assessment
+                                </i><span class="align-middle"> Details </span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-nowrap" data-toggle="tab" href="#tabTourney" aria-controls="tabTourney" role="tab">
+                                <i class="material-icons align-middle" >
+                                    event
+                                </i><span class="align-middle"> Tourney </span></a>
+                        </li>
+                        <li class="nav-item" >
+                            <a class="nav-link text-nowrap " data-toggle="tab" href="#tabPlayer" aria-controls="tabPlayer" role="tab" >
+                                <i class="material-icons align-middle" >
+                                    accessibility
+                                </i><span class="align-middle"> Player </span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link text-nowrap" data-toggle="tab" href="#tabSettings" aria-controls="tabSettings" role="tab">
+                                <i class="material-icons align-middle" >
+                                    settings
+                                </i><span class="align-middle"> Settings </span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-nowrap" data-toggle="tab" href="#taba" aria-controls="taba" role="tab">
+                                <i class="material-icons align-middle" >
+                                    people_outline
+                                </i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#taba" aria-controls="taba" role="tab"><i class="fa fa-heart-o fa-fw"></i> <span class="d-none d-md-inline">Link</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="border-1 col-md-10  pt-3 rounded">
+            <div class="card w-100 h-100 ">
+                <div class="card-body tab-content">
+                    <div class="tab-pane " id="taba" role="tabpanel">taba
+                    </div>
+
+                        <div class="tab-pane " id="tabSettings" role="tabpanel">tabSettings
+                        </div>
+                        <div class="tab-pane " id="tabPlayer" role="tabpanel">tabPlayer
+                        </div>
+                        <div class="tab-pane " id="tabTourney" role="tabpanel">tabTourney
+                        </div>
+                        <div class="tab-pane active" id="tabDetails" role="tabpanel">tabDetails
+                        </div>
+
+                </div>
+
+                </div>
+
+        </main>
+    </div>
+</div>
+
+
+{% endblock content %}
