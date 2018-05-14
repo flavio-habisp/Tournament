@@ -78,6 +78,7 @@ $(function() {
                 $("#result").addClass("alert alert-success");
                 $('#result').fadeIn();
                 $('#result').fadeOut( 2500,"linear" );
+                $('#loading-indicator').hide();
 
               }
             },
@@ -88,9 +89,9 @@ $(function() {
                 $("#result").addClass("alert alert-danger");
                 $('#result').fadeIn();
                 $('#result').fadeOut( 2500,"linear" );
+                $('#loading-indicator').hide();
             }
         });
-            $('#loading-indicator').hide();
 
         return false;
     });
@@ -212,10 +213,12 @@ jQuery(document).ready(function($) {
                     {% if user.is_authenticated %}
                     <td><button type="button" class="btn btn-outline-primary"  data-toggle="modal" data-target="#modal" data-name="{{tourney.name}}" data-id="{{tourney.id}}" >Apply</button></td>
 
-                    <td><a type="button" class="btn btn-secondary" data-container="body" href="tournament_del/{{tourney.id}}"
+                    <td><a  data-container="body" href="tournament_del/{{tourney.id}}"
                                 data-toggle="popover" data-placement="left"  onclick="return confirm('Are you sure you want to delete?')"
                                 data-content="All registers for '{{tourney.name}}' will be deleted!">
-                        X
+                        <i class="material-icons">
+                        delete
+                        </i>
                     </a></td>
                     {% else %}
                     <td><a href="{% url 'account_login' %}" class="btn btn-outline-primary">Log in</a></td>

@@ -1,27 +1,56 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 
 {% block javascript %}
+
 <script>
+    var url_ajax = '{% url "validate" %}';
+</script>
 
-
-
-jQuery(document).ready(function($) {
-    $('[data-click] li').click(function() {
-    $('#target').text($(this).find('span').text())
-    });
-});
-
-  </script>
+<script src="{% static 'js/tournament/tourney.js' %}"></script>
 {% endblock javascript %}
 {% block content %}
 
-<style>
 
+<!-- Modal -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalVerticalLabel" aria-hidden="true">
 
+    <div class="modal-dialog"  role="document">
+        <div class="modal-content">
+            <div><img src="{% static 'images/loading.gif' %}" id="loading-indicator" WIDTH="40%" style="display:none;position: fixed;  left: 24%;  top: 10%; z-index: 10;" />
+            </div>
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalVerticalLabel">{{ tournament.name }} - {{tournament.start_datetime|date:'M d'}}/{{tournament.end_datetime|date:'M d'}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <center><div id="result"  role="alert"></div></center>
+                <form id="ApllyTournament" method="post" enctype="multipart/form-data">
 
-</style>
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{tournament.id}}">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="name" required placeholder="Name">
+
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control"  name="email" required placeholder="e-mail">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="number" required placeholder="Account Number" >
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <input id="tag-form-submit" type="submit" class="btn btn-primary" value="Apply">
+            </div>
+        </div>
+    </div>
+</div><!-- /.modal -->
 
 
 <div class="container-fluid ">
@@ -35,37 +64,36 @@ jQuery(document).ready(function($) {
                     <ul class="nav flex-column" data-click id="outerTab" role="tablist">
                         <li class="nav-item">
                             <span class="nav-link">Dashboard</span>
-                            </a>
                         </li>
                         <li class="nav-item align-content-center">
-                            <a class="nav-link text-nowrap" data-toggle="tab" href="#tabDetails" aria-controls="tabDetails" role="tab">
+                            <a class="nav-link text-nowrap" data-toggle="tab" href="#tabDetails" aria-controls="tabDetails" role="tab" data-details>
                                 <i class="material-icons align-middle" >
                                     assessment
                                 </i><span class="align-middle"> Details </span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-nowrap" data-toggle="tab" href="#tabTourney" aria-controls="tabTourney" role="tab">
+                            <a class="nav-link text-nowrap" data-toggle="tab" href="#tabTourney" aria-controls="tabTourney" role="tab" data-tourney>
                                 <i class="material-icons align-middle" >
                                     event
                                 </i><span class="align-middle"> Tourney </span></a>
                         </li>
                         <li class="nav-item" >
-                            <a class="nav-link text-nowrap " data-toggle="tab" href="#tabPlayer" aria-controls="tabPlayer" role="tab" >
+                            <a class="nav-link text-nowrap " data-toggle="tab" href="#tabPlayer" aria-controls="tabPlayer" role="tab" data-player>
                                 <i class="material-icons align-middle" >
                                     accessibility
                                 </i><span class="align-middle"> Player </span></a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link text-nowrap" data-toggle="tab" href="#tabSettings" aria-controls="tabSettings" role="tab">
+                            <a class="nav-link text-nowrap" data-toggle="tab" href="#tabSettings" aria-controls="tabSettings" role="tab" data-settings>
                                 <i class="material-icons align-middle" >
                                     settings
                                 </i><span class="align-middle"> Settings </span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-nowrap" data-toggle="tab" href="#taba" aria-controls="taba" role="tab">
+                            <a class="nav-link text-nowrap" data-toggle="tab" href="#tabMatch" aria-controls="tabMatch" role="tab">
                                 <i class="material-icons align-middle" >
                                     people_outline
-                                </i></a>
+                                </i><span class="align-middle"> Match </span> </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#taba" aria-controls="taba" role="tab"><i class="fa fa-heart-o fa-fw"></i> <span class="d-none d-md-inline">Link</span></a>
@@ -75,24 +103,55 @@ jQuery(document).ready(function($) {
             </div>
         </nav>
 
-        <main class="border-1 col-md-10  pt-3 rounded">
+        <main class="border-1 col-md-10  pt-3 rounded shadow-sm">
             <div class="card w-100 h-100 ">
                 <div class="card-body tab-content">
-                    <div class="tab-pane " id="taba" role="tabpanel">taba
+                    <div class="tab-pane " id="tabMatch" role="tabpanel">tabMatch
                     </div>
 
-                        <div class="tab-pane " id="tabSettings" role="tabpanel">tabSettings
-                        </div>
-                        <div class="tab-pane " id="tabPlayer" role="tabpanel">tabPlayer
-                        </div>
-                        <div class="tab-pane " id="tabTourney" role="tabpanel">tabTourney
-                        </div>
-                        <div class="tab-pane active" id="tabDetails" role="tabpanel">tabDetails
-                        </div>
+                    <div class="tab-pane " id="tabSettings" role="tabpanel">tabSettings
+                    </div>
+                    <div class="tab-pane " id="tabPlayer" role="tabpanel">
+
+
+                        <table class="table table-sm-responsive ">
+                            <tbody >
+                            <tr ><td colspan="3" > <a href="#" id="new_player" data-toggle="modal" data-target="#modal">
+                                <i class="material-icons align-middle"
+                                    data-toggle="popover"
+                                    data-placement="right"
+                                    data-content="Add new Player!">
+                                    person_add
+                                </i></a></td></tr>
+                            {% for player in players %}
+                            <tr data-id="{{player.id}}">
+                                <th scope="row" class="align-middle">{{ forloop.counter }}</th>
+                                <th class="align-middle">{{player.name}}</th>
+                                <td class="align-middle text-right">
+                                    <a href="#"
+                                       data-toggle="popover"
+                                       data-placement="left"
+                                       data-content="Player '{{player.name}}' will be deleted!"
+                                       onclick="if(confirm('Format the hard disk?')) remove_tr('{{player.id}}');">
+                                        <i class="material-icons align-middle" >
+                                            delete_outline
+                                        </i></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="tab-pane " id="tabTourney" role="tabpanel">tabTourney
+                    </div>
+                    <div class="tab-pane " id="tabDetails" role="tabpanel">
+                        {% include "tournament/tournament.html" with form=comment_form %}
+                    </div>
 
                 </div>
 
-                </div>
+            </div>
 
         </main>
     </div>

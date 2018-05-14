@@ -7,3 +7,4 @@ db.sqlite3
 db.sqlite3.orig
 .DS_Store
 *___jb_tmp___
+.idea

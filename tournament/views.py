@@ -8,15 +8,15 @@ from .models import Tournament, Team, Player
 
 def aplly_tournament(request):
 
-    import pdb;
-    pdb.set_trace()
+    #import pdb;
+    #pdb.set_trace()
     return redirect('home')
 
 
 def validate(request):
 
-    import pdb;
-    pdb.set_trace()
+    #import pdb;
+    #pdb.set_trace()
 
     u_name = request.POST.get('name', None)
     t_id = request.POST.get('id', None)
@@ -79,6 +79,7 @@ def tournament_del(request, pk):
 def tournament(request, pk):
 
     _tournament = Tournament.objects.get(id=pk)
+    _players = Tournament.objects.get(id=pk).players.all()
 
-    return render(request, 'tournament/tourney.html', {'tournament': _tournament})
+    return render(request, 'tournament/tourney.html', {'tournament': _tournament, 'players':_players})
 
