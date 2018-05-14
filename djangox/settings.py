@@ -37,7 +37,6 @@ INSTALLED_APPS = [
 
     'users',
     'pages',
-    'sass',
 
     'tournament',
     'matches',
