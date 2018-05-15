@@ -27,7 +27,10 @@
         <label >End Date(mm/dd/yyyy)</label>
         <input  type="text" name="end_datetime" required  class="form-control" value="{{tournament.end_datetime |date:'m d y'}}">
     </div>
+
+        {% if user.is_authenticated %}
     <button type="submit" class="save btn btn-default">Save</button>
+        {% endif %}
 </form>
 
 
