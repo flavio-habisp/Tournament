@@ -198,7 +198,7 @@ jQuery(document).ready(function($) {
     <div class="card-body tab-content">
 
         <div class="tab-pane active" id="tabc" role="tabpanel">
-            <table class="table table-hover" data-click data-url="/tournament/">
+            <table class="table table-hover table-responsive" data-click data-url="/tournament/">
                 <tbody >
                 {% for tourney in tourneys %}
                 <tr data-id="{{tourney.id}}">
