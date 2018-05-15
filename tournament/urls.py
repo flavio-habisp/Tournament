@@ -6,6 +6,7 @@ urlpatterns = [
     path('ajax/validate/', views.validate, name='validate'),
     path('tournament_form/', views.tournament_form, name='tournament_form'),
     path('tournament_new/', views.tournament_new, name='tournament_new'),
+    path('tournament_edit/<int:pk>/', views.tournament_edit, name='tournament_edit'),
     path('tournament_del/<int:pk>/', views.tournament_del, name='tournament_del'),
     path('tournament/<int:pk>/', views.tournament, name='tournament'),
 

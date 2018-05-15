@@ -7,10 +7,10 @@ sidebar navigation
     $('#target').text($(this).find('span').text())
     });
 
-
+/*
     $('[data-details]').click(function() { alert("details")
     })
-
+*/
 
     $('[data-tourney]').click(function() { alert("tourney")
     })

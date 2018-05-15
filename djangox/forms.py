@@ -5,4 +5,4 @@ class TournamentForm(forms.ModelForm):
 
     class Meta:
         model = Tournament
-        fields = ('name', 'sport','slug', 'tournament_ads' )
+        fields = ('name', 'sport','tournament_ads')

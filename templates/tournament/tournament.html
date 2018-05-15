@@ -1,7 +1,14 @@
 {% load widget_tweaks %}
 
 
-<form method="POST" class="post-form" action="tournament_new/">{% csrf_token %}
+
+        {% if  tournament.id %}
+<form method="POST" class="post-form" action="{% url 'tournament_edit' pk=tournament.id %}">{% csrf_token %}
+          <input type='hidden' name="id" value="{{ tournament.id }}" />
+        {% else %}
+<form method="POST" class="post-form" action="{% url 'tournament_new' %}">{% csrf_token %}
+        {% endif %}
+
 
     {% for field in tournament_form.visible_fields %}
     <div class="form-group">
@@ -14,11 +21,13 @@
     {% endfor %}
     <div class="form-group">
         <label >Start Date(mm/dd/yyyy)</label>
-        <input  type="text" name="start_datetime" required  class="form-control">
+        <input  type="text" name="start_datetime" required  class="form-control" value="{{tournament.start_datetime|date:'m d y'}}">
     </div>
     <div class="form-group">
         <label >End Date(mm/dd/yyyy)</label>
-        <input  type="text" name="end_datetime" required  class="form-control">
+        <input  type="text" name="end_datetime" required  class="form-control" value="{{tournament.end_datetime |date:'m d y'}}">
     </div>
     <button type="submit" class="save btn btn-default">Save</button>
 </form>
+
+

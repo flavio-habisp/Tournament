@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from .forms import TournamentFormObj
+from djangox.forms import TournamentForm
 from .models import Tournament, Team, Player
 
 
@@ -63,10 +64,30 @@ def tournament_form(request):
 def tournament_new(request):
 
     modelTournament = TournamentFormObj(request.POST)
+
     if modelTournament.is_valid():
-        modelTournament.save()
+
+        _tournament = modelTournament.save(commit=False)
+        _tournament.save()
 
     return redirect('home')
+
+
+def tournament_edit(request, pk):
+
+    _tournament = get_object_or_404(Tournament, id=pk)
+    modelTournament = TournamentFormObj(request.POST, instance=_tournament)
+
+    if modelTournament.is_valid():
+
+        _tournament = modelTournament.save(commit=False)
+        _tournament.save()
+
+
+    import pdb;
+    pdb.set_trace()
+
+    return redirect('tournament', pk=_tournament.id)
 
 
 def tournament_del(request, pk):
@@ -80,6 +101,7 @@ def tournament(request, pk):
 
     _tournament = Tournament.objects.get(id=pk)
     _players = Tournament.objects.get(id=pk).players.all()
+    _tournament_form = TournamentForm (instance=_tournament)
 
-    return render(request, 'tournament/tourney.html', {'tournament': _tournament, 'players':_players})
+    return render(request, 'tournament/tourney.html', {'tournament': _tournament, 'players':_players, 'tournament_form' : _tournament_form})
 
