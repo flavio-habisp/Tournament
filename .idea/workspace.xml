@@ -2,16 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="baf2e9ac-1394-444d-9302-e346d642c98a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djangox/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangox/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djangox/forms.py___jb_tmp___" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/tournament/tourney.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/tournament/tourney.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tournament/tournament.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament/tournament.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tournament/tournament.html___jb_tmp___" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tournament/tourney.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tournament/tourney.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tournament/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/tournament/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tournament/forms.py___jb_tmp___" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tournament/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/tournament/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tournament/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tournament/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tournament/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="78" column="19" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="19" />
+            <state relative-caret-position="291">
+              <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -74,7 +64,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tourney.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tourney.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/tournament/tourney.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="328">
@@ -82,6 +72,15 @@
               <folding>
                 <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -100,18 +99,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
               <caret line="5" column="43" lean-forward="true" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tournament/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="59" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -201,10 +188,10 @@
         <option value="$PROJECT_DIR$/tournament/urls.py" />
         <option value="$PROJECT_DIR$/djangox/forms.py" />
         <option value="$PROJECT_DIR$/static/js/tournament/tourney.js" />
-        <option value="$PROJECT_DIR$/tournament/views.py" />
         <option value="$PROJECT_DIR$/tournament/forms.py" />
         <option value="$PROJECT_DIR$/templates/tournament/tournament.html" />
         <option value="$PROJECT_DIR$/templates/tournament/tourney.html" />
+        <option value="$PROJECT_DIR$/tournament/views.py" />
       </list>
     </option>
   </component>
@@ -557,13 +544,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/users/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -677,16 +657,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tournament/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="78" column="19" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tournament/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="376">
@@ -714,6 +684,23 @@
           <caret line="116" column="29" selection-start-line="116" selection-start-column="29" selection-end-line="116" selection-end-column="29" />
           <folding>
             <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tournament/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
+          <folding>
+            <element signature="e#0#62#0" expanded="true" />
           </folding>
         </state>
       </provider>

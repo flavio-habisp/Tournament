@@ -83,10 +83,6 @@ def tournament_edit(request, pk):
         _tournament = modelTournament.save(commit=False)
         _tournament.save()
 
-
-    import pdb;
-    pdb.set_trace()
-
     return redirect('tournament', pk=_tournament.id)
 
 
