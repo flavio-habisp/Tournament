@@ -21,6 +21,16 @@ class Player(models.Model):
     def __str__(self):
         return '{} ({})'.format(self.name, self.email)
 
+    def parser_name(self):
+        unformated_name = self.name
+        arr_name = unformated_name.split()
+        first_name = arr_name[0]
+        last_name = arr_name[len(arr_name)-1]
+        initial_name = first_name[0]
+        if len(arr_name) > 1:
+            return initial_name + ". " + last_name
+        else:
+            return first_name
 
 class Team(models.Model):
     name = models.CharField(max_length=100)
@@ -32,7 +42,7 @@ class Team(models.Model):
 
     def __str__(self):
         if self.players.count() > 1:
-            return '{}'.format(" - ".join(str(player.name) for player in self.players.all()))
+            return '{}'.format(" - ".join(str(player.parser_name()) for player in self.players.all()))
         else:
             return '{}'.format(self.name)
 

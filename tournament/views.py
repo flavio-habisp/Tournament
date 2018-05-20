@@ -38,7 +38,7 @@ def validate(request):
         player.number = u_number
         player.save()
         data['error_message'] += 'A user ' + u_name + ' created successfully.'
-        team.name = u_name
+        team.name = player.parser_name()
         team.save()
         team.players.add(player)
         team.save()
@@ -98,6 +98,9 @@ def tournament(request, pk):
     _tournament = Tournament.objects.get(id=pk)
     _players = Tournament.objects.get(id=pk).players.all()
     _tournament_form = TournamentForm (instance=_tournament)
+
+    #import pdb;
+    #pdb.set_trace()
 
     return render(request, 'tournament/tourney.html', {'tournament': _tournament, 'players':_players, 'tournament_form' : _tournament_form})
 
