@@ -37,6 +37,21 @@ $(function() {
         "opens": "center"
     });
 });
+
+
+$(function() {
+    $('input[name="datetime"]').daterangepicker({
+        "timePicker": true,
+        "timePicker24Hour": true,
+        "singleDatePicker": true,
+        "showDropdowns": true,
+        "opens": "center",
+        "locale": {
+        format: 'MM/DD/YYYY hh:mm:ss',}
+
+    });
+});
+
 </script>
 
 
@@ -138,7 +153,41 @@ $(function() {
         <main class="border-1 col-md-10  pt-3 rounded shadow-sm">
             <div class="card w-100 h-100 ">
                 <div class="card-body tab-content">
-                    <div class="tab-pane " id="tabMatch" role="tabpanel">tabMatch
+                    <div class="tab-pane " id="tabMatch" role="tabpanel">
+                        <!-- Match Start-->
+
+                        <div class="row">
+                            <div class="form-group">
+                                <select class="form-control" id="sel1" required>
+                                    <option >Player 1</option>
+                                    {% for player in players %}
+                                    <option value="{{player.id}}">{{player.name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" id="sel2" required>
+                                    <option >Player 2</option>
+                                    {% for player in players %}
+                                    <option value="{{player.id}}">{{player.name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <input  type="text" name="datetime" required  class="form-control" placeholder="mm/dd/yyyy hh:mm">
+                            </div>
+                            <div class="form-group">
+                                <input  type="text" required  class="form-control" placeholder="place">
+                            </div>
+                            <div class="form-group">
+                                <input id="tag-submit" type="submit" class="btn btn-primary" value="Apply">
+                            </div>
+
+
+                        </div>
+
+                        <!-- Match END-->
                     </div>
 
                     <div class="tab-pane " id="tabSettings" role="tabpanel">tabSettings
@@ -148,21 +197,21 @@ $(function() {
 
                         <table class="table-lg  table-responsive-lg ">
                             <tbody >
-        {% if user.is_authenticated %}
+                            {% if user.is_authenticated %}
                             <tr ><td colspan="3" > <a href="#" id="new_player" data-toggle="modal" data-target="#modal">
                                 <i class="material-icons align-middle"
-                                    data-toggle="popover"
-                                    data-placement="right"
-                                    data-content="Add new Player!">
+                                   data-toggle="popover"
+                                   data-placement="right"
+                                   data-content="Add new Player!">
                                     person_add
                                 </i></a></td></tr>
-        {% endif %}
+                            {% endif %}
                             {% for player in players %}
                             <tr data-id="{{player.id}}">
                                 <th scope="row" class="align-middle">{{ forloop.counter }}</th>
                                 <th class="align-middle">{{player.name}}</th>
                                 <td class="align-middle text-right">
-        {% if user.is_authenticated %}
+                                    {% if user.is_authenticated %}
                                     <a href="#"
                                        data-toggle="popover"
                                        data-placement="left"
@@ -171,7 +220,7 @@ $(function() {
                                         <i class="material-icons align-middle" >
                                             delete_outline
                                         </i></a>
-        {% endif %}
+                                    {% endif %}
 
                                 </td>
                             </tr>
