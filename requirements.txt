@@ -1,6 +1,6 @@
 -e git://github.com/joestump/django-ajax@b71619d5c00d8e0bb990ddbea2c93cf303dc2c80#egg=ajax
 astroid==1.6.2
-certifi==2018.1.18
+certifi==2022.12.7
 chardet==3.0.4
 colorama==0.3.9
 decorator==4.2.1
